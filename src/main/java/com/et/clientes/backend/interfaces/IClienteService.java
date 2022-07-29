@@ -3,18 +3,19 @@ package com.et.clientes.backend.interfaces;
 import com.et.clientes.backend.dao.IClienteDao;
 import com.et.clientes.backend.entity.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface IClienteService {
 
-    public List<Cliente> findAll();
+    public ResponseEntity<?> findAll();
 
-    public Cliente findById( Long id );
+    public ResponseEntity<?> findById( Long id );
 
-    public Cliente create( Cliente cliente );
+    public ResponseEntity<?> create( Cliente cliente );
 
-    public Cliente update( Cliente cliente, Long id );
+    public ResponseEntity<?> update( Cliente cliente, Long id );
 
-    public void deleteById(Long id );
+    public ResponseEntity<?> deleteById(Long id );
 }
