@@ -24,14 +24,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                  HttpHeaders headers,
                                  HttpStatus status, WebRequest request) {
-
-        //Get all fields errors
-//        List<String> errors = ex.getBindingResult()
-//                .getFieldErrors()
-//                .stream()
-//                .map(x -> x.getDefaultMessage())
-//                .collect(Collectors.toList());
-
         List<FieldError> fieldErrors = ex.getBindingResult().getFieldErrors();
         List<String> errors = new ArrayList<>(fieldErrors.size());
         for (FieldError error : fieldErrors) {

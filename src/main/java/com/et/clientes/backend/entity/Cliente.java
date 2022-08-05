@@ -1,6 +1,12 @@
 package com.et.clientes.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -13,12 +19,27 @@ public class Cliente implements Serializable {
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private Long id;
 
+    @NotEmpty
+    @Size( min = 4, max = 20 )
+    @Column( nullable = false )
     private String nombre;
+    @NotEmpty
     private String apellido;
+    @NotEmpty
+    @Email
+    @Column( nullable = false, unique = false )
     private String email;
     @Column( name = "create_at" )
     @Temporal( TemporalType.DATE )
     private Date createAt;
+
+    private String foto;
+
+    @NotNull
+    @ManyToOne( fetch = FetchType.LAZY)
+    @JoinColumn( name = "region_id" )
+    @JsonIgnoreProperties( { "hibernateLazyInitializer", "handler" } )
+    private Region region;
 
     @PrePersist
     public void prePersist(){
@@ -63,5 +84,21 @@ public class Cliente implements Serializable {
 
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
     }
 }
