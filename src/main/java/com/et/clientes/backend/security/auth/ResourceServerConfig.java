@@ -25,10 +25,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         http.authorizeRequests()
                 // endpoints publicos con permisos para todos
                 .antMatchers( HttpMethod.GET
-                        , "/api/clientes"
-                        , "/api/clientes/page/**"
-                        , "/api/clientes/uploads/img/**"
-                        , "/images/**"
+                        , "/api/cliente"
                 ).permitAll()
                 .anyRequest()
                 .authenticated()

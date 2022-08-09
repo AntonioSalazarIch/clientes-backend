@@ -29,3 +29,15 @@ INSERT INTO public.roles ( name_role, description ) VALUES ( 'ROLE_ADMIN'   , 'A
 INSERT INTO public.users_roles ( user_id, role_id ) VALUES ( 1, 1 );
 INSERT INTO public.users_roles ( user_id, role_id ) VALUES ( 2, 2 );
 INSERT INTO public.users_roles ( user_id, role_id ) VALUES ( 2, 1 );
+
+/* PERMISSIONS */
+
+INSERT INTO public.permissions ( name_permission, description ) VALUES ( 'CREATE'   , 'Este usuario tiene los permisos para crear registros' );
+INSERT INTO public.permissions ( name_permission, description ) VALUES ( 'UPDATE'   , 'Este usuario tiene los permisos para actualizar registros' );
+INSERT INTO public.permissions ( name_permission, description ) VALUES ( 'READ'     , 'Este usuario tiene los permisos para leer registros' );
+
+/* ROLES_PERMISSIONS */
+
+INSERT INTO public.roles_permissions ( role_id, permission_id ) VALUES ( 1, 1 );
+INSERT INTO public.roles_permissions ( role_id, permission_id ) VALUES ( 1, 2 );
+INSERT INTO public.roles_permissions ( role_id, permission_id ) VALUES ( 2, 3 );

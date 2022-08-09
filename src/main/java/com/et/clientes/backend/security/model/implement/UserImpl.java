@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UsuarioImpl implements UserDetailsService, IUsuarioService {
+public class UserImpl implements UserDetailsService, IUsuarioService {
 
     private Logger logger = LoggerFactory.getLogger( User.class );
     @Autowired
